@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
           this.message.text = '';
           window.localStorage.setItem('user', JSON.stringify(user));
           this.authService.login(); // Логиним пользователя в систему
-          // this.router.navigate(['']);
+          this.router.navigate(['/system', 'bill']);
         } else {
           this.showMessage({text: 'Пароль неверный', type: 'danger'});
         }
