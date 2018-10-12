@@ -12,20 +12,36 @@ import { BillService } from '../shared/services/bill.service';
 })
 export class BillPageComponent implements OnInit, OnDestroy {
 
-  subscription: Subscription;
+  sub1: Subscription;
+  sub2: Subscription;
+
+  currency: any;
+  bill: Bill;
+  isLoaded =  false;
 
   constructor(private billServise: BillService) { }
 
   ngOnInit() {
-    this.subscription = combineLatest(
+    this.sub1 = combineLatest(
       this.billServise.getBill(),
       this.billServise.getCurrency()
     ).subscribe((data: [Bill, any]) => {
-      console.log(data);
+      this.bill = data[0];
+      this.currency = data[1];
+      this.isLoaded = true;
+    });
+  }
+
+  onRefrash() {
+    this.isLoaded = false;
+    this.sub2 = this.billServise.getCurrency().subscribe((currency: any) => {
+      this.currency = currency;
+      this.isLoaded = true;
     });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.sub1.unsubscribe();
+    // this.sub2.unsubscribe();
   }
 }

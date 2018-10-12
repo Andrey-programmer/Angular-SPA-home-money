@@ -30,7 +30,7 @@ import { SystemComponent } from './system.component';
      HeaderComponent,
     DropdownDirective,
     BillCardComponent,
-    CurrencyCardComponent
+    CurrencyCardComponent,
   ],
   providers: [BillService]
 })
