@@ -6,7 +6,7 @@
 
 <section class="section" *ngIf="isLoaded" >
   <div class="row">      
-    <block-add-event></block-add-event>
+    <block-add-event [categories]="categories"></block-add-event>
     <block-add-category (categoryAdd)="newCategoryAdded($event)"></block-add-category>
   </div>
   <div class="row">
