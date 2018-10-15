@@ -13,6 +13,9 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { SystemRoutingModule } from './system-routing.module';
 import { SystemComponent } from './system.component';
+import { AddEventComponent } from './records-page/add-event/add-event.component';
+import { AddCategoryComponent } from './records-page/add-category/add-category.component';
+import { EditCategoryComponent } from './records-page/edit-category/edit-category.component';
 
 @NgModule({
   imports: [
@@ -31,6 +34,9 @@ import { SystemComponent } from './system.component';
     DropdownDirective,
     BillCardComponent,
     CurrencyCardComponent,
+    AddEventComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
   ],
   providers: [BillService]
 })
