@@ -32,11 +32,6 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
-    },
-    {
-      "name": "New Category!",
-      "capacity": 777,
-      "id": 4
     }
   ],
   "events": [
