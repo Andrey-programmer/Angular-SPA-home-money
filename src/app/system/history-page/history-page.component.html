@@ -8,10 +8,10 @@
 <div *ngIf="isLoaded">
     <block-history-chart [data]="chartData"></block-history-chart>
 
-    <block-history-events></block-history-events>
+    <block-history-events [categories]="categories" [events]="events"></block-history-events>
     
      <!--MODAL-->
-    <block-history-filter></block-history-filter>
+    <block-history-filter ></block-history-filter>
     <!--MODAL-->
 </div>
 
