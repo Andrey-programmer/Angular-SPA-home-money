@@ -17,6 +17,10 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { BillService } from './shared/services/bill.service';
 import { SystemRoutingModule } from './system-routing.module';
 import { SystemComponent } from './system.component';
+import { HistoryChartComponent } from './history-page/history-chart/history-chart.component';
+import { HistoryEventsComponent } from './history-page/history-events/history-events.component';
+import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
+import { HistoryFilterComponent } from './history-page/history-filter/history-filter.component';
 
 @NgModule({
   imports: [
@@ -38,6 +42,10 @@ import { SystemComponent } from './system.component';
     AddEventComponent,
     AddCategoryComponent,
     EditCategoryComponent,
+    HistoryChartComponent,
+    HistoryEventsComponent,
+    HistoryDetailComponent,
+    HistoryFilterComponent,
   ],
   providers: [BillService, EventsService]
 })
