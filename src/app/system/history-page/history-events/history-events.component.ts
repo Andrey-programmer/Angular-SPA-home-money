@@ -11,6 +11,11 @@ export class HistoryEventsComponent implements OnInit {
 
   @Input() categories: Category[] = [];
   @Input() events: MyEvent[] = [];
+
+  searchValue = '';
+  searchPlaceholder = 'Сумма';
+  searchField = 'amount';
+
   constructor() { }
 
 
@@ -18,6 +23,18 @@ export class HistoryEventsComponent implements OnInit {
     this.events.forEach((event) => {
       event.categoryName = this.categories.find(category => category.id === event.category).name;
     });
+  }
+
+  changeCriteria(field: 'string') {
+    const namesMap = {
+      amount: 'Сумма',
+      date: 'Дата',
+      category: 'Категория',
+      type: 'Тип'
+    };
+
+    this.searchPlaceholder = namesMap[field];
+    this.searchField = field;
   }
 
 }
