@@ -72,32 +72,36 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   onFilterApply(filterData) {
     this.toggleFilterVisible(false);
     this.setOrigionalEvents();
-    console.log(filterData);
-    console.log(this.events);
-    console.log(this.filteredEvents);
+    // console.log(filterData);
+    // console.log(this.events);
+    // console.log(this.filteredEvents);
 
     const startPeriod = moment().startOf(filterData.period).startOf('d');
     const endPeriod = moment().endOf(filterData.period).endOf('d');
 
-    this.filteredEvents = this.filteredEvents.filter((event) => {
-      console.log('Event-1', event);
+    const data = this.filteredEvents = this.filteredEvents.filter((event) => {
+      // console.log('Event-1', event);
       return filterData.types.indexOf(event.type) !== -1;
     })
     .filter((event) => {
-      console.log('Event-2', event );
+      // console.log('Event-2', event );
       return filterData.categories.indexOf(event.category.toString()) !== -1;
     })
     .filter((event) => {
-      console.log('Event-3', event);
+      // console.log('Event-3', event);
       const momentDate = moment(event.date, 'DD.MM.YYYY HH:mm:ss');
       return momentDate.isBetween(startPeriod, endPeriod);
     });
 
-    // this.calculateChatData();
+    console.log('DATA', data);
+
+    this.calculateChatData();
   }
 
   onFilterCancel() {
     this.toggleFilterVisible(false);
+    this.setOrigionalEvents();
+    this.calculateChatData();
   }
 
   ngOnDestroy() {
