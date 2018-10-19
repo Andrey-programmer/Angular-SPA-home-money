@@ -1,11 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { PreloadAllModules , RouterModule, Routes } from '@angular/router';
+
 import { SystemModule } from './system/system.module';
 import { AuthModule } from './auth/auth.module';
 
-
+const routes: Routes = [
+   /*  {
+      path: 'system', loadChildren: './system/system.module#SystemModule'
+    } */
+];
 
 
 @NgModule({
@@ -14,7 +19,10 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     SystemModule,
     HttpClientModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot(routes,
+                        {
+                            preloadingStrategy: PreloadAllModules
+                        })
   ],
   exports: [
     RouterModule

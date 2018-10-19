@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { SystemComponent } from './system.component';
+import { AuthGuard } from '../shared/services/auth.guard';
 import { BillPageComponent } from './bill-page/bill-page.component';
+import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
 import { HistoryPageComponent } from './history-page/history-page.component';
 import { PlanningPageComponent } from './planning-page/planning-page.component';
 import { RecordsPageComponent } from './records-page/records-page.component';
-import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
+import { SystemComponent } from './system.component';
 
 
-const routes: Routes = [{
-   path: 'system', component: SystemComponent, children: [
+
+const routes: Routes = [
+  {
+   path: 'system', component: SystemComponent, canActivate: [AuthGuard], children: [
      { path: 'bill', component: BillPageComponent },
      { path: 'history', component: HistoryPageComponent },
      { path: 'history/:id', component: HistoryDetailComponent },
