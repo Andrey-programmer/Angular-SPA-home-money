@@ -14,6 +14,7 @@ import { EventsService } from '../shared/services/events.service';
 export class HistoryPageComponent implements OnInit, OnDestroy {
   categories: Category[] = [];
   events: MyEvent[] = [];
+  filteredEvents: MyEvent[] = [];
   chartData = [];
 
   isLoaded = false;
@@ -31,6 +32,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
       this.categories = data[0];
       this.events = data[1];
 
+      this.setOrigionalEvents();
       this.calculateChatData();
 
       this.isLoaded = true;
@@ -40,7 +42,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   calculateChatData(): void {
     this.chartData = [];
     this.categories.forEach((category) => {
-        const categoryEvents = this.events.filter((event) => event.category === category.id && event.type === 'outcome');
+        const categoryEvents = this.filteredEvents.filter((event) => event.category === category.id && event.type === 'outcome');
         this.chartData.push({
           name: category.name,
           value: categoryEvents.reduce((total, event) => {
@@ -51,11 +53,10 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    if (this.sub1) {
-      this.sub1.unsubscribe();
-    }
+  private setOrigionalEvents() {
+    this.filteredEvents = this.events.slice();
   }
+
 
   private toggleFilterVisible(dir: boolean) {
     this.isFilterVisible = dir;
@@ -66,12 +67,25 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   }
 
 
-  onFilterApply() {
-    this.toggleFilterVisible(true);
+  onFilterApply(filterData) {
+    this.toggleFilterVisible(false);
+    this.setOrigionalEvents();
+    console.log(filterData);
+    console.log(this.events);
+    console.log(this.filteredEvents);
+
+    this.filteredEvents = this.filteredEvents.filter((event) => {
+      console.log(filterData.types);
+    });
   }
 
   onFilterCancel() {
     this.toggleFilterVisible(false);
   }
 
+  ngOnDestroy() {
+    if (this.sub1) {
+      this.sub1.unsubscribe();
+    }
+  }
 }
