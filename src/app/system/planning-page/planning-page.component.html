@@ -3,7 +3,9 @@
       Страница планирования <span class="sparkline bar"></span>
   </h3>
 </div>
-<section class="section" *ngIf="!isLoaded"></section>
+<section class="section text-center" *ngIf="!isLoaded">
+        <block-animated-loader></block-animated-loader> 
+</section>
 <section class="section" *ngIf="isLoaded">
   <div class="row">
       <div class="col-md-12">

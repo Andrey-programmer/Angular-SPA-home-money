@@ -10,7 +10,9 @@
 </div>
 
 
-<div *ngIf="!isLoaded" class="text-center">Loading ...</div>
+<div *ngIf="!isLoaded" class="text-center">
+    <block-animated-loader></block-animated-loader> 
+</div>
 <div *ngIf="isLoaded">
   <block-history-chart [data]="chartData"></block-history-chart>
 
