@@ -17,6 +17,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   chartData = [];
 
   isLoaded = false;
+  isFilterVisible = false;
 
   sub1: Subscription;
 
@@ -54,6 +55,23 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     if (this.sub1) {
       this.sub1.unsubscribe();
     }
+  }
+
+  private toggleFilterVisible(dir: boolean) {
+    this.isFilterVisible = dir;
+  }
+
+  openFilter() {
+    this.toggleFilterVisible(true);
+  }
+
+
+  onFilterApply() {
+    this.toggleFilterVisible(true);
+  }
+
+  onFilterCancel() {
+    this.toggleFilterVisible(false);
   }
 
 }

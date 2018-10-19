@@ -27,13 +27,13 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub1 = this.route.params
                 .subscribe((params: Params) => {
-                  console.log(params['id']);
+                  // console.log(params['id']);
                   this.eventsService.getEventById(params['id']).subscribe((event: MyEvent) => {
-                    console.log(event);
+                    // console.log(event);
                     this.event = event;
                     this.categoriesService.getCategoriyById(String(event.category)).subscribe((category: Category) => {
                       this.category = category;
-                      console.log(category);
+                      // console.log(category);
                       this.isLoaded = true;
                     });
                   });
