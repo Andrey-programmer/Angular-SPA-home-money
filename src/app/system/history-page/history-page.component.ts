@@ -1,6 +1,8 @@
 import { combineLatest } from 'rxjs';
 import { Subscription } from 'rxjs-compat';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import * as moment from 'moment';
+
 import { Category } from '../shared/models/category.model';
 import { MyEvent } from '../shared/models/event.model';
 import { CategoriesService } from '../shared/services/categories.service';
@@ -74,9 +76,24 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     console.log(this.events);
     console.log(this.filteredEvents);
 
+    const startPeriod = moment().startOf(filterData.period).startOf('d');
+    const endPeriod = moment().endOf(filterData.period).endOf('d');
+
     this.filteredEvents = this.filteredEvents.filter((event) => {
-      console.log(filterData.types);
+      console.log('Event-1', event);
+      return filterData.types.indexOf(event.type) !== -1;
+    })
+    .filter((event) => {
+      console.log('Event-2', event );
+      return filterData.categories.indexOf(event.category.toString()) !== -1;
+    })
+    .filter((event) => {
+      console.log('Event-3', event);
+      const momentDate = moment(event.date, 'DD.MM.YYYY HH:mm:ss');
+      return momentDate.isBetween(startPeriod, endPeriod);
     });
+
+    // this.calculateChatData();
   }
 
   onFilterCancel() {
