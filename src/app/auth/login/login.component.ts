@@ -6,13 +6,15 @@ import { AuthService } from '../../shared/services/auth.service';
 import { Message } from '../../shared/models/message.model';
 import { User } from '../../shared/models/user.model';
 import { UsersService } from '../../shared/services/users.service';
+import { fadeTrigger } from '../../shared/animations/fade.animation';
 
 
 
 @Component({
   selector: 'block-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [fadeTrigger]
 })
 export class LoginComponent implements OnInit {
 
