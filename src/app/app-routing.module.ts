@@ -25,7 +25,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     AuthModule,
-    SystemModule,
+    // SystemModule,
     HttpClientModule,
     RouterModule.forRoot(routes,
                         {
