@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -7,6 +7,7 @@ import { Message } from '../../shared/models/message.model';
 import { User } from '../../shared/models/user.model';
 import { UsersService } from '../../shared/services/users.service';
 import { fadeTrigger } from '../../shared/animations/fade.animation';
+import { Title, Meta } from '@angular/platform-browser';
 
 
 
@@ -17,6 +18,7 @@ import { fadeTrigger } from '../../shared/animations/fade.animation';
   animations: [fadeTrigger]
 })
 export class LoginComponent implements OnInit {
+  @HostBinding('@fadeBlock') a = true;
 
   form: FormGroup;
   message: Message;
@@ -25,8 +27,22 @@ export class LoginComponent implements OnInit {
     private usersService: UsersService,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
-    ) { }
+    private route: ActivatedRoute,
+    private title: Title,
+    private meta: Meta
+    ) {
+      title.setTitle('Вход в систему');
+      meta.addTags([
+        {
+        name: 'keywords',
+        content: 'логин, вход, система'
+        },
+        {
+        name: 'description',
+        content: 'Страница для входа в систему'
+        }
+      ]);
+     }
 
 
   ngOnInit() {
