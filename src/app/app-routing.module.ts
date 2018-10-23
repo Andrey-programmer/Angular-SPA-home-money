@@ -7,10 +7,14 @@ import { SystemModule } from './system/system.module';
 import { AuthModule } from './auth/auth.module';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
+
 const routes: Routes = [
-/*     {
+   /*  {
       path: 'system', loadChildren: './system/system.module#SystemModule'
     }, */
+    {
+      path: 'system', loadChildren: () => SystemModule
+    },
     {
       path: '**', component: NotFoundComponent
     }

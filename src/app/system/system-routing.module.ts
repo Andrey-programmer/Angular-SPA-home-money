@@ -12,7 +12,7 @@ import { SystemComponent } from './system.component';
 
 const routes: Routes = [
   {
-   path: 'system', component: SystemComponent, canActivate: [AuthGuard], children: [
+   path: '', component: SystemComponent, canActivate: [AuthGuard], children: [
      { path: 'bill', component: BillPageComponent },
      { path: 'history', component: HistoryPageComponent },
      { path: 'history/:id', component: HistoryDetailComponent },
@@ -20,6 +20,7 @@ const routes: Routes = [
      { path: 'records', component: RecordsPageComponent}
    ]
 }];
+
 
 @NgModule({
   imports: [
