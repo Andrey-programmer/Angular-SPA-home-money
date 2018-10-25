@@ -9,12 +9,12 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 
 
 const routes: Routes = [
-   /*  {
-      path: 'system', loadChildren: './system/system.module#SystemModule'
-    }, */
     {
-      path: 'system', loadChildren: () => SystemModule
+      path: 'system', loadChildren: './system/system.module#SystemModule'
     },
+    /* {
+      path: 'system', loadChildren: () => SystemModule
+    }, */
     {
       path: '**', component: NotFoundComponent
     }
